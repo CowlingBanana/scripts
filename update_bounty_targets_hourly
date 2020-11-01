@@ -1,0 +1,4 @@
+#!/bin/sh
+#Cron task to update bounty targets data hourly from aridante's project :)
+
+{ cd /home/dobby/bounty-targets-data/ && git pull && date; } >> /home/dobby/bounty-targets-data/newgit.log && cd data && awk '{print "https://" $0}' domains.txt >> url-domains.txt

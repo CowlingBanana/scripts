@@ -1,0 +1,3 @@
+#!/bin/sh
+#Cron task to update nuclei templates hourly from pdiscovery's repo :) 
+{ cd /home/dobby/nuclei-templates && git pull && date; } >> /home/dobby/nuclei-templates/git.log
