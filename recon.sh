@@ -53,6 +53,10 @@ echo Checking live web servers
 httpx -l $subdir/allsubdomains_$domain.txt -silent -o $webdir/livewebservers_$domain.txt
 }
 
+dirsearching(){
+python3 ~/tools/dirsearch/dirsearch.py -e php,asp,aspx,jsp,py,txt,conf,config,bak,backup,swp,old,db,sql,json,xml,log,js -u $domain --random-agents -s 1.00 -F -r --plain-text-report dirsearching_$domain.txt
+}
+
 urls(){
 echo Fetching urls using waybackursl
 waybackurls $domain >> $urldir/waybackurls_$domain.txt
@@ -71,7 +75,7 @@ cat $urldir/allurls_$domain.txt | gf ssti >> $urldir/ssti_urls_$domain.txt
 }
 parameters(){
 echo Mining for parameters using paramspider
-python3 paramspider.py --domain $domain --exclude woff,css,js,png,svg,php,jpg --output $paramdir/paramspider_$domain.txt --quiet
+python3 ~/tools/ParamSpider/paramspider.py --domain $domain --exclude woff,css,js,png,svg,php,jpg --output $paramdir/paramspider_$domain.txt --quiet
 
 }
 xss(){
@@ -106,12 +110,13 @@ done
 }
 
 
-#subdomain_enumeration
-#webservers
-#vuln_check
-#urls
+subdomain_enumeration
+webservers
+dirsearching
+urls
+parameters
 #xss
-#parameters
 #sqli
-#portscan
+vuln_check
+portscan
 #fuzzing

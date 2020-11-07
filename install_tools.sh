@@ -19,11 +19,11 @@ sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update
 }
 install_local_tools(){
-sudo apt install firefox vlc terminator magic-wormhole git 
-python3 -m pip install youtube-dlc
+sudo apt install firefox vlc terminator git 
+python3 -m pip install --upgrade youtube-dlc
 }
 install_packaged_tools(){
-sudo apt install -y tmux vim git openvpn screenfetch aria2 iputils-ping gcc make libpcap-dev
+sudo apt install -y tmux vim git openvpn magic-wormhole screenfetch aria2 iputils-ping gcc make libpcap-dev
 sudo apt install -y build-essential libssl-dev libffi-dev python-dev python-setuptools python3-pip
 sudo apt install -y apt-transport-https
 sudo apt install -y libcurl4-openssl-dev libssl-dev jq ruby-full libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev build-essential libgmp-dev zlib1g-dev libldns-dev python-dnspython
